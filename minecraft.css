@@ -1,0 +1,343 @@
+.article .article {
+	padding-top: 15px;
+}
+#presetTable {
+	height: 2.5em;
+}
+#presetBoxCell {
+	border-right: none;
+	padding-right: 7px;
+	width: 70%;
+}
+.presetButtonCell {
+	border-width: 1px 0;
+	padding-left: 0;
+	width: 15%;
+}
+#presetTextBox {
+	width: 100%;
+	height: 26px;
+	vertical-align: middle;
+	padding: 0 3px;
+	border: 1px solid #999999;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.zeroclipboard-is-hover {
+	background: #aeaeae !important;
+}
+.presetButtonCell input, .biomeButtonCell input {
+	width: 100%;
+	vertical-align: middle;
+	padding: 0 12px;
+	height: 26px;
+}
+#error {
+	border: 1px solid #e67e22;
+	background: #fffbc7;
+	color: #c0392b;
+	margin-top: -11px;
+	height: 0;
+	display: none;
+}
+#error.visible {
+	display: block;
+	padding: 3px 10px;
+	height: auto;
+}
+#biomeTable {
+	text-align: center;
+	height: 2.5em;
+	margin-bottom: 0;
+}
+#biomeTypeCell {
+	width: 27.7%;
+}
+#biomeCell {
+	width: 42.3%;
+	border-right: none;
+	padding-right: 7px;
+}
+.biomeButtonCell {
+	width: 15%;
+	border-width: 1px 0;
+	padding-left: 0;
+}
+#worldContainer {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float: left;
+	width: 70%;
+	_width: 66%;
+	padding-right: 8px;
+	margin-bottom: 10px;
+	-webkit-overflow-scrolling: touch;
+}
+#blockContainer {
+	float: right;
+	width: 30%;
+	-webkit-overflow-scrolling: touch;
+}
+#worldHeader, #blocksHeader {
+	height: 40px;
+	background: #999;
+	color: #fff;
+}
+#worldTypeHeader, #searchHeader {
+	height: 40px;
+}
+#searchHeader th {
+	padding: 0 7px;
+}
+#blockSearchBox {
+	width: 100%;
+	height: 24px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-left: 22px;
+	background: url("../../images/sprites.gif") no-repeat -93px 3px;
+	border: 1px solid #999999;
+}
+#worldHeaderTable, #blockHeaderTable {
+	margin-bottom: -1px;
+}
+#worldTableContainer, #blockTableContainer {
+	overflow: auto;
+	border: 1px solid #999999;
+	height: 500px;
+}
+.listBoxTableContainer {
+	overflow: auto;
+	border: 1px solid #999999;
+	margin: 20px 20px 0;
+	width: 458px;
+	height: 458px;
+	-webkit-overflow-scrolling: touch;
+}
+#activeItem {
+	background: #666666;
+	color: white;
+}
+#activeItem td span {
+	color: white;
+}
+#worldTable, #blockTable {
+	margin: 0;
+}
+#presetWindowTable td:last-child {
+	word-break: break-all;
+	overflow: hidden;
+}
+#presetWindowTable {
+	table-layout: fixed;
+}
+.listBoxWindowTable {
+	margin: 0;
+}
+.worldBlockHeader {
+	width: 40%;
+}
+.worldBlockImage {
+	width: 5%;
+}
+.worldBlockName {
+	width: 35%;
+}
+.worldBlockCount {
+	width: 20%;
+	text-align: right;
+}
+.worldBlockCount input {
+	width: 3em;
+	height: 24px;
+	padding-right: 4px;
+	background: rgba(255, 255, 255, 0.5);
+	border: 1px solid #999999;
+	text-align: right;
+	ime-mode: disabled;
+}
+.worldBlockEdit {
+	width: 40%;
+	text-align: center;
+}
+.worldBlockEdit input {
+	background: rgba(255, 255, 255, 0.5);
+	border: 1px solid #999999;
+	margin-right: 5px;
+	width: 16%;
+	height: 28px;
+}
+.worldBlockEdit input:disabled {
+	background: #cccccc;
+	opacity: .4;
+}
+#blockTable td {
+	border: none;
+}
+.blockImageCell {
+	width: 30px;
+}
+#structureTableContainer {
+	clear: left;
+	border: 1px solid #999999;
+}
+#structureTable {
+	margin: 10px;
+}
+#structureTable td {
+	border: none;
+}
+#structureTableContainer div {
+	text-align: right;
+	margin: -10px 40px 10px 0;
+}
+.structureOptions {
+	padding: 0 2.15em 1em;
+	width: 25%;
+	vertical-align: top;
+}
+.structureBoxes {
+	vertical-align: top;
+	width: 25%;
+	padding: 0;
+}
+.structureBoxes input {
+	text-align: right;
+	border: 1px solid #999999;
+	height: 17px;
+	padding: 0;
+}
+.structureBoxes input::-ms-clear {
+	display: none;
+}
+#biomeDescriptionWindow div, #tutorialWindow div {
+	padding: 0 10px;
+}
+#biomeDescriptionWindow div p, #tutorialWindow p {
+	text-indent: 0;
+	padding: 0 10px;
+	font-size: 90%;
+	line-height: 1.6;
+}
+#biomeDescriptionWindow div dl {
+	margin-top: -1em;
+}
+#biomeDescriptionWindow div dt {
+	padding-left: 10px;
+	margin-top: 1em;
+}
+#biomeWindow, #presetWindow, #biomeDescriptionWindow, #tutorialWindow {
+	display: none;
+}
+/* For Internet Explorer 7 / 6 */
+#biomeButton, #biomeDetailButton, #presetButton, #presetCopyButton {
+	color: #333333;
+	background: #eeeeee;
+	border: 1px #95959a solid;
+	text-decoration: none;
+	display: block;
+	padding: 5px 5px;
+	display: inline;
+	*width: 143px;
+}
+.worldBlockHeader, #worldHeader, #blocksHeader {
+	_text-align: center;
+}
+#presetTable, #biomeTable, #worldHeaderTable {
+	_border-right: 1px solid #999999;
+}
+#blockHeaderTable {
+	*border-right: 1px solid #999999;
+}
+#presetTextBox {
+	*width: 629px;
+	*height: 24px;
+}
+#worldTableContainer {
+	_width: 630px;
+	*overflow-x: hidden;
+}
+#blockTableContainer {
+	*overflow-x: hidden;
+}
+#biomeTable {
+	*width: 101%;
+}
+#blockSearchBox {
+	*width: 240px;
+	_width: 263px;
+}
+#blockHeaderTable {
+	_width: 304px;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 10px auto;
+	vertical-align: middle;
+	width: 100%;
+}
+td, th {
+	border: 1px solid #999999;
+	font-weight: normal;
+}
+.stripeTable thead tr {
+	color: white;
+	background-color: #666666;
+}
+.stripeTable th {
+	text-align: center;
+	border: none;
+}
+.stripeTable td {
+	padding: 7px 15px;
+	border: none;
+	line-height: 1.1;
+	cursor: default;
+}
+.stripeTable tr {
+	background-color: white;
+}
+.stripeTable tr:nth-child(odd) {
+	background-color: #eaeaea;
+}
+.stripeTableOdd {
+	background-color: #eaeaea !important;
+}
+.listBoxWindow .stripeTable tr:hover, #blockTable tr:hover {
+	background-color: #ababab;
+}
+.listBoxWindow .stripeTable tr:active, #blockTable tr:active {
+	background-color: #666666;
+	color: white;
+}
+.listBoxWindow .stripeTable tr:active td span, #blockTable tr:active td span {
+	color: white;
+}
+
+.block {
+	width: 25px;
+	height: 30px;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	padding-right: 5px;
+	background-image: url("blocks.png");
+	vertical-align: middle;
+}
+.en_name {
+	font-size: 80%;
+	color: #555;
+}
+.blockID {
+	color: #2c3e50;
+}
+hr {
+	height: 0;
+	border: none;
+	border-top: 1px #999999 solid;
+	padding: 0 20px;
+}
