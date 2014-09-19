@@ -1,219 +1,210 @@
 <!doctype html>
-<html><head>
-<meta charset="UTF-8">
-<title>Minecraft Superflat Editor</title>
-<link rel="Stylesheet" href="../../base.css" type="text/css">
-<link rel="Stylesheet" href="../../pc.css" type="text/css">
-<link rel="Stylesheet" href="minecraft.css" type="text/css">
-<link rel="Stylesheet" href="blocks.css" type="text/css">
-<!--  <script type="text/javascript" src="../../php/lunalys/analyzer/tracker.js"></script> -->
-</head><body>
-<div id="tracker" style="position:absolute;visibility:hidden;">
-<noscript>
-<img src="../../php/lunalys/analyzer/write.php?guid=ON&amp;act=img" width="0" height="0" alt="tracker">
-</noscript>
-</div>
-<script type="text/javascript" src="../../scripts/script.js"></script>
-<script type="text/javascript" src="../../scripts/ZeroClipboard.js" defer></script>
-<script type="text/javascript" src="minecraft.js" defer></script>
-<script type="text/javascript" src="minecraft_data.js" defer></script>
-<div id="header">ちとくのホームページ
-<form  id="searchbar" action="http://www.google.co.jp/search">
-<input type="hidden" name="hq" value="inurl:chitoku.symphonic-net.com/">
-<input type="search" name="q">
-<input type="submit" value="検索" id="searchbutton"><br>
-<a href="../../mail.html" id="mailbutton"><span></span>連絡</a>
-<a href="../../php/share.php?s=twitter" target="share" id="tweetbutton"><span></span>ツイート</a>
-<a href="../../php/share.php?s=fb" target="share" id="likebutton"><span></span>いいね！</a>
-<a href="../../php/share.php?s=hatena" target="share" id="hatenabutton"><span></span>ブックマーク</a>
-<a href="../../php/share.php?s=line" target="share" id="linebutton"><span></span>LINE</a>
-</form>
-</div>
-<div id="nav"><ul>
-<li><a href="../../index.html">HOME<br>トップページ</a></li>
-<li><a href="../../pspprograming/index.html">PSP Programming<br>プログラミング</a></li>
-<li><a href="../index.html" id="here">Softwares<br>ソフトウェア</a></li>
-<li><a href="../../windows/index.html">Windows/PSP<br>活用術</a></li>
-<li><a href="../../others/index.html">Others<br>その他</a></li>
-</ul></div>
-<div class="article"><h1>Minecraft Superflat Editor</h1>
-<div id="breadcrumbs"><a href="../../index.html">HOME</a> &gt; <a href="../index.html">ソフトウェア</a> &gt; Minecraft Superflat Editor</div>
-<div class="article">
-<table id="presetTable">
-	<tr>
-		<td id="presetBoxCell"><input type="text" id="presetTextBox"></td>
-		<td class="presetButtonCell"><input type="button" value="コピー" id="presetCopyButton"></td>
-		<td class="presetButtonCell" style="border-right-width: 1px;"><input type="button" value="プリセット" id="presetButton"></td>
-	</tr>
-</table>
-<div id="error">エラー</div>
-<table id="biomeTable">
-	<tr>
-		<td id="biomeTypeCell">バイオームの種類</td>
-		<td id="biomeCell">
-			<span id="biome">草原 (Plains)</span>
-		</td>
-		<td class="biomeButtonCell"><input type="button" value="変更" id="biomeButton"></td>
-		<td class="biomeButtonCell" style="border-right-width: 1px;"><input type="button" value="詳細" id="biomeDetailButton"></td>
-	</tr>
-</table>
-<div id="worldContainer">
-	<table id="worldHeaderTable">
-		<tr id="worldHeader">
-			<th colspan="4">ワールド</th>
-		</tr>
-		<tr id="worldTypeHeader">
-			<th class="worldBlockHeader">ブロック</th>
-			<th class="worldBlockCount" style="text-align: center;">数</th>
-			<th class="worldBlockEdit">変更</th>
-		</tr>
-	</table>
-	<div id="worldTableContainer" ondrop="dragTo = 1; blockDrop(event)" ondragover="if (!world.blocks.length) cancelDrop(event)">
-		<table id="worldTable" class="stripeTable" ondragover="cancelDrop(event)">
-		</table>
-	</div>
-</div>
-<div id="blockContainer">
-	<table id="blockHeaderTable">
-		<tr id="blocksHeader">
-			<th>追加</th>
-		</tr>
-		<tr id="searchHeader">
-			<th><input type="search" id="blockSearchBox" placeholder="検索..."></th>
-		</tr>
-	</table>
-	<div id="blockTableContainer" ondrop="dragTo = 2; blockDrop(event)" ondragover="cancelDrop(event)">
-		<table id="blockTable" class="stripeTable">
-		</table>
-	</div>
-</div>
-<div id="structureTableContainer">
-	<table id="structureTable">
-		<tr>
-			<td colspan="2">
-				<input type="checkbox" id="villageOption">
-				<label for="villageOption">村</label>
-			</td>
-			<td colspan="2">
-				<input type="checkbox" id="strongholdOption">
-				<label for="strongholdOption">要塞</label>
-			</td>
-		</tr>
-		<tr>
-			<td class="structureOptions">
-				規模 (0.0～1.0)<br>
-				間隔 (≧9.0)
-			</td>
-			<td class="structureBoxes">
-				<input type="text" id="village_size" value=""><br>
-				<input type="text" id="village_distance" value="">
-			</td>
-			<td class="structureOptions">
-				個数<br>
-				間隔 (≧1.0)<br>
-				分布 (≧1.0)
-			</td>
-			<td class="structureBoxes">
-				<input type="text" id="stronghold_count" value=""><br>
-				<input type="text" id="stronghold_distance" value=""><br>
-				<input type="text" id="stronghold_spread" value="">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<input type="checkbox" id="mineshaftOption">
-				<label for="mineshaftOption">廃坑</label>
-			</td>
-			<td colspan="2">
-				<input type="checkbox" id="biome_1Option">
-				<label for="biome_1Option">神殿 / 小屋</label>
-			</td>
-		</tr>
-		<tr>
-			<td class="structureOptions">
-				頻度 (0.0～1.0)
-			</td>
-			<td class="structureBoxes">
-				<input type="text" id="mineshaft_chance" value="">
-			</td>
-			<td class="structureOptions">
-				間隔 (≧9.0)
-			</td>
-			<td class="structureBoxes">
-				<input type="text" id="biome_1_distance" value="">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" rowspan="2">
-				<input type="checkbox" id="dungeonOption">
-				<label for="dungeonOption">ダンジョン</label><br>
-				<input type="checkbox" id="lakeOption">
-				<label for="lakeOption">湖</label><br>
-				<input type="checkbox" id="lava_lakeOption">
-				<label for="lava_lakeOption">溶岩湖</label>
-			</td>
-			<td>
-				<input type="checkbox" id="decorationOption">
-				<label for="decorationOption">装飾</label>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" class="structureOptions">
-				植物、鉱石などの装飾要素の生成を切り替えます。<br>
-				一部は、石、土、草ブロック、砂、菌糸 などが必要です。
-			</td>
-		</tr>
-	</table>
-	<div>
-		<a href="javascript: showBiomeDescriptionWindow();" title="構造物とバイオームについて">構造物が生成されないときは...</a>
-	</div>
-</div>
-<div id="presetWindow" class="listBoxWindow">
-	<div id="presetWindowTableContainer" class="listBoxTableContainer">
-		<table id="presetWindowTable" class="stripeTable listBoxWindowTable">
-		</table>
-	</div>
-</div>
-<div id="biomeWindow" class="listBoxWindow">
-	<div id="biomeTableContainer" class="listBoxTableContainer">
-		<table id="biomeWindowTable" class="stripeTable listBoxWindowTable">
-		</table>
-	</div>
-</div>
-<div id="biomeDescriptionWindow">
-	<div>
-		<h2>構造物とバイオームについて</h2>
-		<p><dfn>バイオーム</dfn> は Minecraft のワールド内において地形や、空、植物、そして構造物の生成に影響を及ぼすシステムのことです。</p>
-		<p>スーパーフラット モード では、構造物オプションの指定とバイオームの指定により、生成される構造物が異なります。<br>
-		たとえば、構造物「村」は、全層が草ブロックであっても、海洋バイオーム上には生成されません。</p>
-		<div style="text-align:center">構造物とバイオーム</div>
-		<dl>
-			<dt>村</dt>
-			<dd>草原 / 砂漠</dd>
-			<dt>要塞</dt>
-			<dd>砂漠 (丘陵) / 森林 (丘陵) / 山岳 (山縁) / 湿地 / タイガ / 氷原 / 氷の山岳 / ジャングル (丘陵)</dd>
-			<dt>神殿 / 小屋</dt>
-			<dd>砂漠 (丘陵) / ジャングル (丘陵) / 湿地</dd>
-		</dl>
-		<hr>
-		<p style="margin-bottom: 0; margin-top: 0.5em;">出典: <cite><a href="http://www.minecraftwiki.net/wiki/Superflat" target="_blank">Superflat - Minecraft Wiki</a></cite></p>
-		<div style="text-align: right; margin-top: -1.5em;"><a href="javascript: $('curtain').click()">閉じる</a></div>
-	</div>
-</div>
-<div id="tutorialWindow">
-	<div>
-		<h2>Minecraft Superflat Editor</h2>
-		<img src="tutorial.png" class="nozoom" alt="チュートリアル" style="float: left; margin-right: 10px">
-		<p style="float: left; margin: 0; font-size: 28px; text-align: center;">
-			ドラッグ & ドロップで<br>
-			追加 / 削除 / 編集。<br>
-			コピーするだけ！
-		</p>
-		<p style="float: left; text-align: right; margin-top: 9px; width: 333px; padding: 0;">
-			<a href="javascript: $('curtain').click()" style="font-size: 14px; padding: 0.6em 1.2em" class="button">使ってみる ▶</a>
-		</p>
-	</div>
-</div>
-</div></div>
-<div id="footer">&#169; Chitoku 2013. All Rights Reserved.</div>
-</body></html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Minecraft Superflat Editor - ちとくのホームページ</title>
+    <meta name="description" content="Minecraft の スーパーフラット のコードを、ブロックを選んでいくだけで生成するアプリケーションです。村や廃坑といった構造物も簡単に指定できます。">
+    <meta name="keywords" content="minecraft,superflat,editor,スーパーフラット,プリセット,コード,生成,generator,ジェネレーター,tool,ツール">
+    <link rel="stylesheet" href="./css/base.css" type="text/css">
+    <link rel="stylesheet" href="./css/pc.css" type="text/css">
+    <link rel="stylesheet" href="./css/minecraft.css" type="text/css">
+    <link rel="stylesheet" href="./css/blocks.css" type="text/css">
+  </head>
+  <body>
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/ZeroClipboard.js" defer></script>
+    <script type="text/javascript" src="./js/minecraft.js" defer></script>
+    <script type="text/javascript" src="./js/minecraft_data.js" defer></script>
+    <div class="article">
+      <h1>Minecraft Superflat Editor</h1>
+      <div class="article">
+        <table id="presetTable">
+          <tr>
+            <td id="presetBoxCell">
+              <input type="text" id="presetTextBox">
+            </td>
+            <td class="presetButtonCell">
+              <input type="button" value="コピー" id="presetCopyButton">
+            </td>
+            <td class="presetButtonCell" style="border-right-width: 1px;">
+              <input type="button" value="プリセット" id="presetButton">
+            </td>
+          </tr>
+        </table>
+        <div id="error">エラー</div>
+        <table id="biomeTable">
+          <tr>
+            <td id="biomeTypeCell">バイオームの種類</td>
+            <td id="biomeCell">
+              <span id="biome">草原 (Plains)</span>
+            </td>
+            <td class="biomeButtonCell">
+              <input type="button" value="変更" id="biomeButton">
+            </td>
+            <td class="biomeButtonCell" style="border-right-width: 1px;">
+              <input type="button" value="詳細" id="biomeDetailButton">
+            </td>
+          </tr>
+        </table>
+        <div id="worldContainer">
+          <table id="worldHeaderTable">
+            <tr id="worldHeader">
+              <th colspan="4">ワールド</th>
+            </tr>
+            <tr id="worldTypeHeader">
+              <th class="worldBlockHeader">ブロック</th>
+              <th class="worldBlockCount" style="text-align: center;">数</th>
+              <th class="worldBlockEdit">変更</th>
+            </tr>
+          </table>
+          <div id="worldTableContainer" ondrop="dragTo = 1; blockDrop(event)" ondragover="if (!world.blocks.length) cancelDrop(event)">
+            <table id="worldTable" class="stripeTable" ondragover="cancelDrop(event)">
+            </table>
+          </div>
+        </div>
+        <div id="blockContainer">
+          <table id="blockHeaderTable">
+            <tr id="blocksHeader">
+              <th>追加</th>
+            </tr>
+            <tr id="searchHeader">
+              <th><input type="search" id="blockSearchBox" placeholder="検索..."></th>
+            </tr>
+          </table>
+          <div id="blockTableContainer" ondrop="dragTo = 2; blockDrop(event)" ondragover="cancelDrop(event)">
+            <table id="blockTable" class="stripeTable">
+            </table>
+          </div>
+        </div>
+        <div id="structureTableContainer">
+          <table id="structureTable">
+            <tr>
+              <td colspan="2">
+                <input type="checkbox" id="villageOption">
+                <label for="villageOption">村</label>
+              </td>
+              <td colspan="2">
+                <input type="checkbox" id="strongholdOption">
+                <label for="strongholdOption">要塞</label>
+              </td>
+            </tr>
+            <tr>
+              <td class="structureOptions">
+                規模 (0.0～1.0)<br>
+                間隔 (≧9.0)
+              </td>
+              <td class="structureBoxes">
+                <input type="text" id="village_size" value=""><br>
+                <input type="text" id="village_distance" value="">
+              </td>
+              <td class="structureOptions">
+                個数<br>
+                間隔 (≧1.0)<br>
+                分布 (≧1.0)
+              </td>
+              <td class="structureBoxes">
+                <input type="text" id="stronghold_count" value=""><br>
+                <input type="text" id="stronghold_distance" value=""><br>
+                <input type="text" id="stronghold_spread" value="">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <input type="checkbox" id="mineshaftOption">
+                <label for="mineshaftOption">廃坑</label>
+              </td>
+              <td colspan="2">
+                <input type="checkbox" id="biome_1Option">
+                <label for="biome_1Option">神殿 / 小屋</label>
+              </td>
+            </tr>
+            <tr>
+              <td class="structureOptions">
+                頻度 (0.0～1.0)
+              </td>
+              <td class="structureBoxes">
+                <input type="text" id="mineshaft_chance" value="">
+              </td>
+              <td class="structureOptions">
+                間隔 (≧9.0)
+              </td>
+              <td class="structureBoxes">
+                <input type="text" id="biome_1_distance" value="">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" rowspan="2">
+                <input type="checkbox" id="dungeonOption">
+                <label for="dungeonOption">ダンジョン</label><br>
+                <input type="checkbox" id="lakeOption">
+                <label for="lakeOption">湖</label><br>
+                <input type="checkbox" id="lava_lakeOption">
+                <label for="lava_lakeOption">溶岩湖</label>
+              </td>
+              <td>
+                <input type="checkbox" id="decorationOption">
+                <label for="decorationOption">装飾</label>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="structureOptions">
+                植物、鉱石などの装飾要素の生成を切り替えます。<br>
+                一部は、石、土、草ブロック、砂、菌糸 などが必要です。
+              </td>
+            </tr>
+          </table>
+          <div>
+            <a href="javascript: showBiomeDescriptionWindow();" title="構造物とバイオームについて">構造物が生成されないときは...</a>
+          </div>
+        </div>
+        <div id="presetWindow" class="listBoxWindow">
+          <div id="presetWindowTableContainer" class="listBoxTableContainer">
+            <table id="presetWindowTable" class="stripeTable listBoxWindowTable">
+            </table>
+          </div>
+        </div>
+        <div id="biomeWindow" class="listBoxWindow">
+          <div id="biomeTableContainer" class="listBoxTableContainer">
+            <table id="biomeWindowTable" class="stripeTable listBoxWindowTable">
+            </table>
+          </div>
+        </div>
+        <div id="biomeDescriptionWindow">
+          <div>
+            <h2>構造物とバイオームについて</h2>
+            <p><dfn>バイオーム</dfn> は Minecraft のワールド内において地形や、空、植物、そして構造物の生成に影響を及ぼすシステムのことです。</p>
+            <p>スーパーフラット モード では、構造物オプションの指定とバイオームの指定により、生成される構造物が異なります。<br>
+            たとえば、構造物「村」は、全層が草ブロックであっても、海洋バイオーム上には生成されません。</p>
+            <div style="text-align:center">構造物とバイオーム</div>
+            <dl>
+              <dt>村</dt>
+              <dd>草原 / 砂漠</dd>
+              <dt>要塞</dt>
+              <dd>砂漠 (丘陵) / 森林 (丘陵) / 山岳 (山縁) / 湿地 / タイガ / 氷原 / 氷の山岳 / ジャングル (丘陵)</dd>
+              <dt>神殿 / 小屋</dt>
+              <dd>砂漠 (丘陵) / ジャングル (丘陵) / 湿地</dd>
+            </dl>
+            <hr>
+            <p style="margin-bottom: 0; margin-top: 0.5em;">出典: <cite><a href="http://www.minecraftwiki.net/wiki/Superflat" target="_blank">Superflat - Minecraft Wiki</a></cite></p>
+            <div style="text-align: right; margin-top: -1.5em;"><a href="javascript: $('curtain').click()">閉じる</a></div>
+          </div>
+        </div>
+        <div id="tutorialWindow">
+          <div>
+            <h2>Minecraft Superflat Editor</h2>
+            <img src="./img/tutorial.png" class="nozoom" alt="チュートリアル" style="float: left; margin-right: 10px">
+            <p style="float: left; margin: 0; font-size: 28px; text-align: center;">
+              ドラッグ &amp; ドロップで<br>
+              追加 / 削除 / 編集。<br>
+              コピーするだけ！
+            </p>
+            <p style="float: left; text-align: right; margin-top: 9px; width: 333px; padding: 0;">
+              <a href="javascript: $('curtain').click()" style="font-size: 14px; padding: 0.6em 1.2em" class="button">使ってみる ▶</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">&#169; Chitoku 2014.</div>
+  </body>
+</html>
