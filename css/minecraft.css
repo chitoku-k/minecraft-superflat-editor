@@ -20,8 +20,6 @@
 	vertical-align: middle;
 	padding: 0 3px;
 	border: 1px solid #999999;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 .zeroclipboard-is-hover {
@@ -65,12 +63,9 @@
 	padding-left: 0;
 }
 #worldContainer {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	float: left;
 	width: 70%;
-	_width: 66%;
 	padding-right: 8px;
 	margin-bottom: 10px;
 	-webkit-overflow-scrolling: touch;
@@ -94,8 +89,6 @@
 #blockSearchBox {
 	width: 100%;
 	height: 24px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding-left: 22px;
 	background: url("images/sprites.gif") no-repeat -93px 3px;
@@ -210,9 +203,6 @@
 	height: 17px;
 	padding: 0;
 }
-.structureBoxes input::-ms-clear {
-	display: none;
-}
 #biomeDescriptionWindow div, #tutorialWindow div {
 	padding: 0 10px;
 }
@@ -232,7 +222,6 @@
 #biomeWindow, #presetWindow, #biomeDescriptionWindow, #tutorialWindow {
 	display: none;
 }
-/* For Internet Explorer 7 / 6 */
 #biomeButton, #biomeDetailButton, #presetButton, #presetCopyButton {
 	color: #333333;
 	background: #eeeeee;
@@ -241,37 +230,6 @@
 	display: block;
 	padding: 5px 5px;
 	display: inline;
-	*width: 143px;
-}
-.worldBlockHeader, #worldHeader, #blocksHeader {
-	_text-align: center;
-}
-#presetTable, #biomeTable, #worldHeaderTable {
-	_border-right: 1px solid #999999;
-}
-#blockHeaderTable {
-	*border-right: 1px solid #999999;
-}
-#presetTextBox {
-	*width: 629px;
-	*height: 24px;
-}
-#worldTableContainer {
-	_width: 630px;
-	*overflow-x: hidden;
-}
-#blockTableContainer {
-	*overflow-x: hidden;
-}
-#biomeTable {
-	*width: 101%;
-}
-#blockSearchBox {
-	*width: 240px;
-	_width: 263px;
-}
-#blockHeaderTable {
-	_width: 304px;
 }
 
 table {
