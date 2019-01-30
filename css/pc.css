@@ -1,132 +1,34 @@
 /* for PCs */
 body {
 	margin: 0 auto;
-	/* IE 6 */
-	_width: 1000px;
-	/* IE 5 */
-	_text-align: center;
-}
-#header, .article {
-	/* IE 5 */
-	_text-align: left;
-}
-#header {
-	/* IE 5/6 */
-	_padding-left: 2px;
-	_overflow: hidden;
-	_width: 970px;
-	_height: 90px;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	/* IE 6 */
-	_width: 999px;
-	_height: 52px;
 }
 #searchbar {
 	display: inline-block;
 	text-align: right;
-	/* IE 5/6/7 */
-	*position: relative;
-	*top: -65px;
 }
 #searchbar span {
-	/* IE 5 */
-	_width: 16px;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	/* Modern browsers */
 	width: 11px;
 }
 #searchbutton {
 	display: none;
 }
 #searchbar a {
-	/* IE 5/6 */
-	_overflow: hidden;
-	_height: 26px;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	/* Modern browsers */
 	height: 16px;
 }
 #searchbar input {
 	width: 100%;
 	height: 26px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	/* IE 5 */
-	_width: 391px;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	/* IE 6/7 */
-	*width: 363px;
-}
-#searchbar a span {
-	/* IE 6 */
-	_vertical-align: -3px
-}
-#nav ul {
-	/* IE 5/6 */
-	_padding-left: 2px;
-	_position: relative;
-	/* IE 5 */
-	_width: 970px;
-	_left: -21px;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	/* IE 6 */
-	_width: 1009px;
-	_left: -1px;
-}
-.article {
-	/* IE 5 */
-	_text-align: center;
-}
-.article .article {
-	/* IE 5 */
-	_width: 960px;
-	/* IE 6 */
-	_text-align: left;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	_width: 958px;
-}
-.article h1 {
-	/* IE 5/6 */
-	_text-align: left;
-	_width: 960px;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	/* IE 6 */
-	_width: 934px;
-}
-#breadcrumbs {
-	/* IE 5 */
-	_text-align: left;
-	_width: 960px;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	/* IE 6 */
-	_width: 958px;
 }
 .button span {
-	/* IE 5 */
-	width: 16px;
-	voice-family: "\"}\"";
-	voice-family: inherit;
-	/* Modern browsers */
 	width: 11px;
 }
 #searchbar input[type="search"]:focus {
 	outline: none;
 	border-color: #408dd2 !important;
-	-moz-box-shadow: 1px 1px 4px #66a3d2, -1px 1px 4px #66a3d2;
-	-webkit-box-shadow: 1px 1px 4px #66a3d2, -1px 1px 4px #66a3d2;
 	box-shadow: 1px 1px 4px #66a3d2, -1px -1px 4px #66a3d2;
 }
 input[type="button"], input[type="submit"] {
-	/* IE 5/6 (for Unsupported selectors) */
 	color: #333333;
 	background: #eeeeee;
 	border: 1px #95959a solid;

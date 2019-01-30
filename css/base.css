@@ -187,7 +187,6 @@ input[type="button"]:hover, input[type="submit"]:hover {
 	display: inline-block;
 	margin: 0.2em auto;
 	padding: 15px 30px 15px 25px;
-
 	transition: all 0.3s ease 0s;
 }
 .button:hover {
