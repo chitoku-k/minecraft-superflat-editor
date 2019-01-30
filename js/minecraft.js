@@ -12,14 +12,15 @@ function convertToBlockName(name) {
 	}).toLowerCase();
 }
 
+function getBlockTable(block) {
+	return "<tr onclick=\"addBlock('" + block.id + "')\" draggable=\"true\" ondragstart=\"blockDragStart(event); dragFrom = 2; draggingBlock = \'" +
+		block.id + "\'\"><td class=\"blockImageCell\">" + "<span class=\"block block_" + block.id.replace(/:/g, "_") + "\"></span></td><td>" +
+		(block.name ? block.name + "<br>" : "") + (block.en_name ? "<span class=\"en_name\">" + block.en_name + "</span><br>" : "") +
+		"<span class=\"blockID\">" + block.id + "</span></td></tr>";
+}
+
 function createBlockTable(array) {
 	var blocks = "";
-	var getBlockTable = function (block) {
-		return "<tr onclick=\"addBlock('" + block.id + "')\" draggable=\"true\" ondragstart=\"blockDragStart(event); dragFrom = 2; draggingBlock = \'" +
-			block.id + "\'\"><td class=\"blockImageCell\">" + "<span class=\"block block_" + block.id.replace(/:/g, "_") + "\"></span></td><td>" +
-			(block.name ? block.name + "<br>" : "") + (block.en_name ? "<span class=\"en_name\">" + block.en_name + "</span><br>" : "") +
-			"<span class=\"blockID\">" + block.id + "</span></td></tr>";
-	};
 
 	for (var i = 0, n = array.length; i < n; i++) {
 		if (Array.isArray(array[i])) {
@@ -36,26 +37,26 @@ function createBlockTable(array) {
 	$("blockTable").innerHTML = blocks;
 }
 
-function createWorldTable() {
-	var getWorldTable = function (block, count, index) {
-		if (!block) {
-			return "";
-		}
-		return "<tr ondrop=\"dragTo = 0; droppedPosition = '" + index +
-			"'; blockDrop(event)\" ondragstart=\"blockDragStart(event); dragFrom = 0; draggingBlock = " + index +
-			"\" draggable=\"true\"><td class=\"worldBlockImage\"><span class=\"block block_" +
-			block.id.replace(/:/g, "_") + "\"></span></td><td class=\"worldBlockName\">" +
-			(block.name ? block.name + "<br>" : "") + (block.en_name ? "<span class=\"en_name\">" +
-			block.en_name + "</span><br>" : "") + "<span class=\"blockID\">" + block.id + "</span></td><td class=\"worldBlockCount\">" +
-			"<input type=\"text\" value=\"" + count + "\" onkeyup=\"changeBlock(" + index + ", this.value)\"></td>" +
-			"<td class=\"worldBlockEdit\"><input type=\"button\" value=\"＋\" onclick=\"changeBlock(" + index + ", '+1')\">" +
-			"<input type=\"button\" value=\"－\" onclick=\"changeBlock(" + index + ", '-1')\"" + (count < 2 ? " disabled>" : ">") +
-			"<input type=\"button\" onclick=\"switchBlock(" +
-			index + ", -1)\" value=\"▲\"" + (index === 0 ? " disabled>" : ">") + "<input type=\"button\" onclick=\"switchBlock(" +
-			index + ", 1)\" value=\"▼\"" + (index === world.blocks.length - 1 ? " disabled>" : ">") +
-			"<input type=\"button\" onclick=\"removeBlock(" + index + ")\" value=\"✖\"></td></tr>";
-	};
+function getWorldTable(block, count, index) {
+	if (!block) {
+		return "";
+	}
+	return "<tr ondrop=\"dragTo = 0; droppedPosition = '" + index +
+		"'; blockDrop(event)\" ondragstart=\"blockDragStart(event); dragFrom = 0; draggingBlock = " + index +
+		"\" draggable=\"true\"><td class=\"worldBlockImage\"><span class=\"block block_" +
+		block.id.replace(/:/g, "_") + "\"></span></td><td class=\"worldBlockName\">" +
+		(block.name ? block.name + "<br>" : "") + (block.en_name ? "<span class=\"en_name\">" +
+		block.en_name + "</span><br>" : "") + "<span class=\"blockID\">" + block.id + "</span></td><td class=\"worldBlockCount\">" +
+		"<input type=\"text\" value=\"" + count + "\" onkeyup=\"changeBlock(" + index + ", this.value)\"></td>" +
+		"<td class=\"worldBlockEdit\"><input type=\"button\" value=\"＋\" onclick=\"changeBlock(" + index + ", '+1')\">" +
+		"<input type=\"button\" value=\"－\" onclick=\"changeBlock(" + index + ", '-1')\"" + (count < 2 ? " disabled>" : ">") +
+		"<input type=\"button\" onclick=\"switchBlock(" +
+		index + ", -1)\" value=\"▲\"" + (index === 0 ? " disabled>" : ">") + "<input type=\"button\" onclick=\"switchBlock(" +
+		index + ", 1)\" value=\"▼\"" + (index === world.blocks.length - 1 ? " disabled>" : ">") +
+		"<input type=\"button\" onclick=\"removeBlock(" + index + ")\" value=\"✖\"></td></tr>";
+}
 
+function createWorldTable() {
 	world = parsePresetCode(this.value);
 	var blocks = "";
 	var isNonDoubleBlock = false;
@@ -229,7 +230,7 @@ function getBlock(id) {
 	var subBlock;
 
 	if (id.indexOf(":") < 0) {
-		if (Minecraft.blocks[mainBlock] instanceof Array) {
+		if (Array.isArray(Minecraft.blocks[mainBlock])) {
 			if (Minecraft.blocks[mainBlock][0]) {
 				return Minecraft.blocks[mainBlock][0];
 			} else {
@@ -237,12 +238,11 @@ function getBlock(id) {
 				return null;
 			}
 		}
-	}
-	else {
+	} else {
 		subBlock = id.slice(id.indexOf(":") + 1);
 		mainBlock = id.slice(0, id.indexOf(":"));
 
-		if (Minecraft.blocks[mainBlock] instanceof Array) {
+		if (Array.isArray(Minecraft.blocks[mainBlock])) {
 			if (Minecraft.blocks[mainBlock][subBlock]) {
 				return Minecraft.blocks[mainBlock][subBlock];
 			} else {
@@ -271,7 +271,7 @@ function searchBlock() {
 	var ja_name, en_name;
 
 	for (var i = 0, n = Minecraft.blocks.length; i < n; i++) {
-		if (Minecraft.blocks[i] instanceof Array) {
+		if (Array.isArray(Minecraft.blocks[i])) {
 			for (var j = 0, m = Minecraft.blocks[i].length; j < m; j++) {
 				ja_name = Minecraft.blocks[i][j].name;
 				en_name = Minecraft.blocks[i][j].en_name;
@@ -324,7 +324,7 @@ function changeBlock(index, count) {
 	} else if (count === "-1") {
 		world.blocks[index].length--;
 	} else {
-		count = count.toHalfbyte();
+		count = convertToBlockName(count);
 		if (!world.blocks[index] || isNaN(count) || count < 1) {
 			return;
 		}
@@ -374,7 +374,7 @@ function addBlock(id, position) {
 }
 
 function blockDragStart(event) {
-	event.dataTransfer.setData('text', "");
+	event.dataTransfer.setData("text", "");
 }
 
 function blockDrop(event) {
@@ -587,8 +587,8 @@ function generatePresetCode() {
 function parsePresetCode(code) {
 	var matches;
 	var NOT_SUPPORTED = "' はサポートされていません。";
-	var USE_PRESET = "<a href=\"javascript:void(0);\" onclick=\"showPresetWindow()\">プリセット</a> が使用できます。";
-	var CHOOSE_BIOME = "<a href=\"javascript:void(0);\" onclick=\"showBiomeWindow()\">バイオームを変更</a> してください。";
+	var USE_PRESET = "<a onclick=\"showPresetWindow()\">プリセット</a> が使用できます。";
+	var CHOOSE_BIOME = "<a onclick=\"showBiomeWindow()\">バイオームを変更</a> してください。";
 
 	world = {
 		blocks: [],
@@ -773,5 +773,7 @@ addEvent(window, "load", function () {
 		showTutorialWindow();
 	}
 
-	document.cookie = "superflat=1; expires=" + new Date(2014, 9, 6).toGMTString();
+	var date = new Date();
+	date.setDate(date.getDate() + 365);
+	document.cookie = "superflat=1; expires=" + date.toGMTString();
 });
